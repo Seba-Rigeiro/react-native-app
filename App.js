@@ -38,31 +38,31 @@ export default function App() {
     <View style={styles.container}>
       <Text>AGREGA TU CUENTA</Text>
       <StatusBar style="auto" />
-      <View style={styles}>
+      <View style={styles.inputContainer}>
         <TextInput
           placeholder="Cuenta"
-          style={styles.inputContainer}
+          style={styles.input}
           onChangeText={handleChangeTextAccount}
           value={accountValue}
         /><TextInput
         placeholder="Password"
-        style={styles.inputContainer}
+        style={styles.input}
         onChangeText={handleChangeTextPassword}
         value={passwordValue}
       />
         <Button
-          title="Agregar"onPress={handleAddAccount}
+         color="#485B58" title="Agregar"onPress={handleAddAccount}
         />
       </View>
-      <View>
+      <View style={styles.items}>
         <FlatList
           data={accountList}
           keyExtractor={item => item.id}
           renderItem={({ item }) => (
-            <View style={styles} key={item.id}>
+            <View style={styles.account} key={item.id}>
               <Text> Cuenta: {item.account} </Text>
               <Text> Password: {item.password}</Text> 
-              <Button title="X" onPress={() => handleRemoveAccount(item.id)} />
+              <Button color="#485B58" title="X" onPress={() => handleRemoveAccount(item.id)} />
             </View>
           )}
         />
@@ -74,15 +74,40 @@ export default function App() {
 
 const styles = StyleSheet.create({
   container: {
-   
-    backgroundColor: 'rgb(212, 214, 185)',
+    
+    padding: 50,
+    width: 400,
     alignItems: 'center',
-    justifyContent: 'center',
   },
   inputContainer: {
-    flexDirection: 'row',
+    flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'space-between',
     
+    backgroundColor: '534B4F'
   },
+  input: {
+    borderBottomColor: 'black',
+    borderBottomWidth: 1,
+    width: 300,
+  },
+  items: {
+    backgroundColor: '#DFE5DC',
+    paddingLeft: 20,
+    paddingRight: 20,
+    marginTop: 20,
+  },
+  account: {
+    padding: 10,
+    marginTop: 10,
+    marginBottom: 10,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    borderColor: 'black',
+    borderWidth: 1,
+  },
+  deleteButton: {
+    
+  }
 });
